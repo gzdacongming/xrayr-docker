@@ -1,8 +1,20 @@
 version: '3'
-services: 
-  xrayr: 
-    image: chuiniubi/xrayr_chuiniubi:latest
-    volumes:
-      - ./config:/etc/XrayR/ # 映射配置文件夹
+
+services:
+  nginx:
+    image: nginx
+    container_name: nginx
     restart: always
-    network_mode: host
+    network_mode: "host"
+    volumes:
+      - $PWD/config/cert/certificates:/etc/nginx/conf.d/cert
+      - $PWD/config:/etc/nginx/conf.d
+    depends_on:
+      - xrayr
+  xrayr:
+    image: chuiniubi/xrayr_chuiniubi:latest
+    container_name: xrayr
+    volumes:
+      - $PWD/config:/etc/XrayR
+    restart: always
+    network_mode: "host"
