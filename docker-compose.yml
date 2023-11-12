@@ -1,6 +1,13 @@
 version: '3'
 
 services:
+  xrayr:
+    image: chuiniubi/xrayr_chuiniubi:latest
+    container_name: xrayr
+    volumes:
+      - $PWD/config:/etc/XrayR
+    restart: always
+    network_mode: "host"
   nginx:
     image: nginx
     container_name: nginx
@@ -9,12 +16,3 @@ services:
     volumes:
       - $PWD/config/cert/certificates:/etc/nginx/conf.d/cert
       - $PWD/config:/etc/nginx/conf.d
-    depends_on:
-      - xrayr
-  xrayr:
-    image: chuiniubi/xrayr_chuiniubi:latest
-    container_name: xrayr
-    volumes:
-      - $PWD/config:/etc/XrayR
-    restart: always
-    network_mode: "host"
