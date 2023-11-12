@@ -18,7 +18,7 @@
         {
             "type": "field",
             "outboundTag": "socks5-warp",
-            "domain": []
+            "domain": ["geosite:netflix","domain:ping0.cc","geosite:speedtest"]
         },
         {
             "type": "field",
