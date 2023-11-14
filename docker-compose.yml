@@ -16,3 +16,7 @@ services:
     volumes:
       - $PWD/config/cert/certificates:/etc/nginx/conf.d/cert
       - $PWD/config:/etc/nginx/conf.d
+      - $PWD/wait-for-it.sh:/wait-for-it.sh
+    depends_on:
+      - xrayr
+    entrypoint: ./wait-for-it.sh localhost:1234 -t 15  -- ./docker-entrypoint.sh nginx -g 'daemon off;'      
