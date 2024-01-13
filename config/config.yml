@@ -25,7 +25,7 @@ Nodes:
       DeviceLimit: 0 # Local settings will replace remote settings, 0 means disable
       RuleListPath: # /etc/XrayR/rulelist Path to local rulelist file
     ControllerConfig:
-      ListenIP: 0.0.0.0 # IP address you want to listen
+      ListenIP: 127.0.0.1 # IP address you want to listen
       SendIP: 0.0.0.0 # IP address you want to send pacakage
       UpdatePeriodic: 60 # Time to update the nodeinfo, how many sec.
       DeviceOnlineMinTraffic: 100 # V2board面板设备数限制统计阈值，大于此流量时上报设备数在线，单位kB，不填则默认上报
